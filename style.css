@@ -450,6 +450,7 @@ label {
 .big-container {
     width: 100%;
     margin: auto;
+    max-width: 1200px;
 }
 
   
@@ -473,6 +474,8 @@ label {
   .menu-1 {
     margin-top: 200px;
     width: 100%;
+    display: flex;
+    flex-direction: column
   }
 
   .container {
@@ -496,7 +499,7 @@ label {
     left: 0%;
   }
   .menu-1 .text-input {
-    flex-basis: 20%;
+    flex-basis: 30%;
   }
 
   .tickets {
@@ -577,7 +580,7 @@ label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: rgb(246, 246, 246);
     padding: 20px;
     border-radius: 10px;
   }
@@ -590,7 +593,242 @@ label {
     cursor: pointer;
   }
 
-  
+  .content-to-loaded {
+   background-color: #fff;
+   width: 350px;
+   height: 250px;
+   border: 1px #AFAFAF solid;
+   border-radius: 20px;
+   padding-left: 10px;
+   padding-top: 10px;
+  }
+
+  .modal-content h3 {
+    margin-bottom: 50px;
+  }
+
+  .info-arp {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    
+  }
+
+  .info-arp h2 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .heure-modal {
+    margin-right: 90px;
+  }
+
+  .aeroport-arv {
+    padding-right: 10px;
+  }
+
+  .date-vol {
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #A2A2A2;
+  }
+
+  .info-arp .fa {
+    text-align: center;
+    padding-right: 40px;
+    font-size: 20px;
+    margin-left: -35px;
+    color: #25C25A;
+    padding-top: 6px;
+  }
+
+  .compagnie-modal {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .prix-modal {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .distance {
+    font-weight: 600;
+    font-size: 18px;
+
+  }
+
+  .boutons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .btn-reserver {
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    margin-right: 30px;
+    background-color: #25C25A;
+    color: white;
+    border: 1px solid #AFAFAF;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .btn-reserver:hover {
+    background-color: white;
+    border: #25C25A 1px solid;
+    color: #25C25A;
+    transition: 0.5s;
+  }
+  .btn-ajouter {
+    width: 150px;
+    height: 35px;
+    background-color: #4C4C4C;
+    color: white;
+    border: 1px solid #AFAFAF;
+    border-radius: 15px;
+
+  }
+
+  .btn-ajouter:hover {
+    background-color: white;
+    border: #4C4C4C 1px splid;
+    color: #4C4C4C;
+    transition: 0.5s;
+  }
+
+.paiement {
+    width: 90%;
+    margin: center;
+    text-align: center;
+}
+.info-paiement {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 450px;
+    height: 600px;
+    text-align: left;
+    
+}
+.info-paiement h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.paiement-input {
+    position: relative;
+}
+
+.paiement-input input {
+    width: 100%;
+    height: 60px;
+    margin: 10px 0;
+    border: 1px solid #AFAFAF;
+    
+    
+}
+
+.info-cart {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-cart input {
+    flex-basis: 48%;
+}
+
+.paiement-input p {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #AFAFAF;
+}
+input::placeholder {
+    color: #AFAFAF;
+    font-size: 15px;
+       
+}
+.paiement-input .fa {
+    position: absolute;
+    left: 90%;
+    top: 30px;
+    font-size: 25px;
+    color: #AFAFAF;
+}
+
+.paiement-input input {
+    padding-left: 20px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.info-paiement .fa-chevron-left {
+    font-size: 20px;
+    color: #25C25A;
+    cursor: pointer;
+    
+}
+.info-paiement .a {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.retour {
+    margin-bottom: 50px;
+}
+
+.info-paiement h3 {
+    margin-top: 15px;
+    font-weight: 500;
+
+}
+
+.btn-paiement {
+    width: 100%;
+    height: 45px;
+    background-color: #25C25A;
+    color: white;
+    border: 1px solid #AFAFAF;
+    font-size: 18px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.btn-paiement:hover {
+    background-color: white;
+    border: 1px solid #25C25A;
+    color: #25C25A;
+    transition: 0.5s;
+}
+
+.checkbox .condition {
+    font-size: 13px;
+    color: #AFAFAF;
+    margin-top: 10px;
+}
+#check1 {
+    margin-top: 10px;
+}
+
+input[type = "checkbox"] {
+    height: 20px;
+    width: 20px;
+    
+}
+
 
 
 

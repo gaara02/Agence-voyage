@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-    <section >
+    <section>
         <div class="container">
             <nav>
                 <a href="login.html" class="identifier">S'identifier</a>
@@ -19,56 +19,65 @@
                 <hr>
             </nav>
         </div>
-        
     </section>
 
-    <section >
-    
+    <section>
         <div class="big-container">
             <div class="menu-1">
-        <div class="search">
-            <div class="text-input">
-                <i class="fa fa-mark fa-map-marker"></i>
-                <p>À Partir De</p>
-                <input type="text">
-            </div>
-            <div class="text-input">
-                <i class="fa fa-mark fa-map-marker"></i>
-                <p>A Destination De</p>
-                <input type="text">
-            </div>
-            <div class="text-input">
-                
-                <p>Date</p>
-                <input type="date" >
-            </div>
-            <div class="btn2">
-                <button class="btn btn-first">Rechercher</button>
+                <div class="search">
+                    <div class="text-input">
+                        <i class="fa fa-mark fa-map-marker"></i>
+                        <p>À Partir De</p>
+                        <input type="text">
+                    </div>
+                    <div class="text-input">
+                        <i class="fa fa-mark fa-map-marker"></i>
+                        <p>A Destination De</p>
+                        <input type="text">
+                    </div>
+                    <div class="text-input">
+                        <p>Date</p>
+                        <input type="date">
+                    </div>
+                    <div class="btn2">
+                        <button class="btn btn-first">Rechercher</button>
+                    </div>
                 </div>
+                <div class="hr"><hr></div>
+            </div>
         </div>
-       <div class="hr"><hr></div>
-    </div>
-    </div>
     </section>
 
-    <section class="tickets">
-       
-    </section>
+    <section class="tickets"></section>
 
     <div class="modal" id="myModal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true"></i>
-          </span>
-          <h2>Contenu de la page réduite</h2>
-          <h2 class="comagnie-modal"></h2>
-          <h2 class="heure-modal"></h2>
-          <h2 class="prix-modal"></h2>
-          
+            <span class="close" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></span>
+            <h3>Detail du vol</h3>
+            <div class="content-to-loaded">
+                <p class="date-vol"></p>
+                <div class="info-arp">
+                <h2 class="aeroport-dep"></h2>
+                <h2 class="heure-modal"></h2>
+                <i class="fa fa-plane" aria-hidden="true"></i>
+                <h2 class="heure-arrivee"></h2>
+                <h2 class="aeroport-arv"></h2>
+                </div>
+                <p class="compagnie-modal"></p>
+                
+                <p class="prix-modal"></p>
+                
+                <p class="distance"></p>
+                
+                
+            </div>
+            <div class="boutons">
+                <a href="paiement.html"><button class="btn-reserver">Reserver</button></a>
+                <button class="btn-ajouter">Ajouter au panier</button>
+            </div>
         </div>
-      </div>
-    
-    
-    
+    </div>
+
     <script src="ticket.js"></script>
 </body>
 </html>
