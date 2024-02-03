@@ -14,7 +14,7 @@
     <section class="header">
         <div class="slog"><h1>Parce que chaque voyage compte</h1></div>
         <nav>
-            <a href="login.html" class="identifier">S'identifier</a>
+            <a href="login.php" class="identifier">S'identifier</a>
             <a href="" class="naviguer">Naviguer</a>
         </nav>
     </section>
@@ -41,7 +41,7 @@
         
         </div>
         <div class="search-btn">
-            <button class="btn btn-first">Rechercher</button>
+            <a href="billet.php"><button class="btn btn-first">Rechercher</button></a>
             </div>
         
     </div>

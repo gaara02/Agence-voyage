@@ -72,7 +72,7 @@
                 
             </div>
             <div class="boutons">
-                <a href="paiement.html"><button class="btn-reserver">Reserver</button></a>
+                <a href="paiement.php"><button class="btn-reserver">Reserver</button></a>
                 <button class="btn-ajouter">Ajouter au panier</button>
             </div>
         </div>

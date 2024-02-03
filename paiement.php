@@ -13,7 +13,7 @@
 <body>
    <section class="paiement">
     <div class="info-paiement">
-        <a href="billet.html" class="a"><p class="retour"><i class="fa fa-chevron-left" aria-hidden="true"></i> Retour</p></a>
+        <a href="billet.php" class="a"><p class="retour"><i class="fa fa-chevron-left" aria-hidden="true"></i> Retour</p></a>
         <h2>Saisir vos informations de <br> paiement</h2>
         <form action="" method="post">
             <div class="paiement-input">
