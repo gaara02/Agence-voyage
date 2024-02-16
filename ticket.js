@@ -1,4 +1,4 @@
-const vol = [
+/*const vol = [
     {
         compagnie: "UA",
         heure: "22h30",
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     section.innerHTML = displayVol.join("");
-});
+});*/
 
 function openModal(index) {
     const modal = document.querySelector('#myModal');
@@ -84,3 +84,15 @@ function openModal(index) {
 function closeModal() {
     document.querySelector("#myModal").style.display = 'none';
 }
+
+
+function formatDate() {
+    // Récupérer la valeur de l'input date
+    var inputDate = document.getElementById('dateInput').value;
+
+    // Formater la date comme "YYYY-MM-DD"
+    var formattedDate = new Date(inputDate).toISOString().split('T')[0];
+
+    // Appliquer le format à l'input date
+    document.getElementById('dateInput').value = formattedDate;
+  }
