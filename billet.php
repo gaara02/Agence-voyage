@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,35 +49,103 @@
         </div>
     </section>
 
-    <section class="tickets"></section>
+    <?php 
 
-    <div class="modal" id="myModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></span>
-            <h3>Detail du vol</h3>
-            <div class="content-to-loaded">
-                <p class="date-vol"></p>
-                <div class="info-arp">
-                <h2 class="aeroport-dep"></h2>
-                <h2 class="heure-modal"></h2>
-                <i class="fa fa-plane" aria-hidden="true"></i>
-                <h2 class="heure-arrivee"></h2>
-                <h2 class="aeroport-arv"></h2>
-                </div>
-                <p class="compagnie-modal"></p>
-                
-                <p class="prix-modal"></p>
-                
-                <p class="distance"></p>
-                
-                
-            </div>
-            <div class="boutons">
-                <a href="paiement.php"><button class="btn-reserver">Reserver</button></a>
-                <button class="btn-ajouter">Ajouter au panier</button>
-            </div>
-        </div>
-    </div>
+$bdd = new PDO('mysql:host=localhost;dbname=agenceVoyage;charset=utf8;', 'root', 'root');
+
+if(isset($_POST['rechercher'])) {
+    $Apartir = $_POST['a-partir'];
+    $Adestination = $_POST['a-destination'];
+    $date = $_POST['dateInput'];
+
+    
+    $stmt = $bdd->prepare("SELECT * FROM vols 
+                          WHERE aeroportDepart = (SELECT iata_code FROM aeroports WHERE ville = :Apartir)
+                          AND aeroportArrivee = (SELECT iata_code FROM aeroports WHERE ville = :Adestination)
+                          AND dateVol = :date");
+
+    $stmt->bindParam(':Apartir', $Apartir);
+    $stmt->bindParam(':Adestination', $Adestination);
+    $stmt->bindParam(':date', $date);
+
+
+    $stmt->execute();
+
+    
+    if ($stmt->rowCount() > 0) {
+        
+        echo '<section class="tickets">';
+    
+        
+        //echo '<div class="content-to-loaded">';
+    
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $heureDepart = $row['heureDepart'];
+
+// Extraire les heures et les minutes
+            $heures = substr($heureDepart, 0, 2);
+            $minutes = substr($heureDepart, 2);
+
+            // Vérifier la longueur de l'heure extraite
+            if (strlen($heures) === 1) {
+                // Si l'heure est de 3 caractères, extraire seulement le premier caractère
+                $heures = substr($heureDepart, 0, 1);
+                $minutes = substr($heureDepart, 1);
+            }
+
+            // Formater l'heure au format "hh:mm"
+            $heureFormatee = $heures . ':' . $minutes;
+
+           
+            echo '<div class="ticket-container">';
+            echo '<div class="col-item">';
+            echo '<p>Compagnie</p>';
+            echo '<h2 class="compagnie">' . $row['noCompagnie'] . '</h2>';
+            echo '</div>';
+            echo '<div class="col-item">';
+            echo '<p>Heure Départ</p>';
+            echo '<h2 class="heure-dep">' . $heureFormatee . '</h2>';
+            echo '</div>';
+            echo '<div class="col-item item-prix">';
+            echo '<h2 class="prix">' . $row['prix'] . ' FCFA</h2>';
+            echo '<button class="btn-offre" data-index="' . $row['index'] . '" onclick="openModal(' . $row['index'] . ')">Voir l\'offre</button>';
+            echo '</div>';
+            echo '</div>';
+    
+            echo '<div class="content-to-loaded">';
+            echo '<p class="date-vol">' . $row['date'] . '</p>';
+            echo '<div class="info-arp">';
+            echo '<h2 class="aeroport-dep">' . $row['aeroportDep'] . '</h2>';
+            echo '<h2 class="heure-modal">' . $row['heure'] . '</h2>';
+            echo '<i class="fa fa-plane" aria-hidden="true"></i>';
+            echo '<h2 class="heure-arrivee">' . $row['heureArrivee'] . '</h2>';
+            echo '<h2 class="aeroport-arv">' . $row['aeroportArriv'] . '</h2>';
+            echo '</div>';
+            echo '<p class="compagnie-modal">' . $row['compagnie'] . '</p>';
+            echo '<p class="prix-modal">' . $row['prix'] . ' FCFA</p>';
+            echo '<p class="distance">' . $row['distance'] . '</p>';
+            echo "<div class='boutons'>
+                <a href='paiement.php'><button class='btn-reserver'>Reserver</button></a>
+                <button class='btn-ajouter'>Ajouter au panier</button>
+            </div>";
+            echo '</div>';
+        }
+        
+    
+        
+        echo '</section>';
+        
+
+        
+       // echo '</div>';
+    } else {
+        
+        echo '<p>Aucun vol trouvé pour les critères spécifiés.</p>';
+    }
+}
+?>
+           
 
     <script src="ticket.js"></script>
 </body>

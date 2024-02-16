@@ -17,6 +17,50 @@ if(!$_SESSION['password']){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+       
+        function fetchSuggestions(input, target) {
+        $.ajax({
+            url: 'suggestions.php',
+            method: 'POST',
+            data: { input: input, target: target },
+            success: function(response) {
+                $('#' + target + '-suggestions').html(response);
+                
+                $('#' + target + '-suggestions').parent().find('.suggestions-container').show();
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        function selectSuggestion(suggestionText, targetInput) {
+            targetInput.val(suggestionText);
+            targetInput.siblings('.suggestions-container').hide();
+        }
+
+        $('#a-partir').on('input', function() {
+            var inputValue = $(this).val();
+            fetchSuggestions(inputValue, 'a-partir');
+        });
+
+        $('#a-destination').on('input', function() {
+            var inputValue = $(this).val();
+            fetchSuggestions(inputValue, 'a-destination');
+        });
+
+        $('body').on('click', '.suggestions-container .suggestion', function() {
+            var suggestionText = $(this).text();
+            var targetInput = $(this).closest('.text-input').find('input');
+            selectSuggestion(suggestionText, targetInput);
+        });
+    });
+
+
+
+
+    </script>
     <title></title>
 </head>
 <body>
@@ -35,12 +79,14 @@ if(!$_SESSION['password']){
             <div class="text-input">
                 <i class="fa fa-mark fa-map-marker"></i>
                 <p>À Partir De</p>
-                <input type="text">
+                <input type="text" name="a-partir" id="a-partir">
+                <div class="suggestions-container" id="a-partir-suggestions"></div>
             </div>
             <div class="text-input">
                 <i class="fa fa-mark fa-map-marker"></i>
                 <p>A Destination De</p>
-                <input type="text">
+                <input type="text" name="a-destination" id="a-destination">
+                <div id="a-destination-suggestions" class="suggestions-container" ></div>
             </div>
             <div class="text-input">
                 
